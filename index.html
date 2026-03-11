@@ -64,6 +64,7 @@
             font-weight: 800;
             color: var(--dark);
             letter-spacing: -0.03em;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -84,16 +85,16 @@
             cursor: pointer;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
         }
 
-        /* Page Container */
+        /* Page Transitions */
         .page {
             display: none;
             min-height: 100vh;
-            padding-top: 80px;
-            animation: fadeIn 0.5s ease-in;
+            padding-top: 100px; /* Adjusted for nav height */
+            animation: fadeIn 0.6s ease-out;
         }
 
         .page.active {
@@ -101,1114 +102,122 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Section */
+        /* Hero Section Styling */
         .hero {
-            background: var(--dark);
-            color: white;
-            padding: 10rem 2rem 8rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* The Centrifuge SVG Background */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -15%;
-            width: 800px;
-            height: 800px;
-            background-image: url('data:image/svg+xml,<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="white" stroke-width="2" opacity="0.05"><circle cx="400" cy="400" r="350"/><circle cx="400" cy="400" r="300"/><circle cx="400" cy="400" r="250"/><path d="M 400 50 L 480 180 L 620 220 L 580 360 L 650 480 L 520 520 L 480 650 L 400 580 L 320 650 L 280 520 L 150 480 L 220 360 L 180 220 L 320 180 Z"/><path d="M 400 100 L 460 200 L 570 230 L 540 340 L 600 440 L 500 470 L 460 580 L 400 520 L 340 580 L 300 470 L 200 440 L 260 340 L 230 230 L 340 200 Z"/></g></svg>');
-            background-repeat: no-repeat;
-            background-size: contain;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
         }
 
         .hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
+            font-size: 4rem;
             line-height: 1.1;
-            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
         }
 
         .hero p {
-            font-family: 'Lora', serif;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 3rem;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 1.1rem 2.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(93, 93, 255, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(93, 93, 255, 0.4);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-
-        /* Featured Articles Grid */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .article-card {
-            background: white;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-        }
-
-        .article-image {
-            width: 100%;
-            height: 280px;
-            background: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4.5rem;
-            color: white;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .article-content {
-            padding: 2rem;
-        }
-
-        .article-category {
-            display: inline-block;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .article-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-            line-height: 1.3;
-        }
-
-        .article-excerpt {
-            font-family: 'Lora', serif;
+            font-size: 1.25rem;
             color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .article-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Outfit', sans-serif;
-            color: var(--gray);
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Section Heading */
-        .section-heading {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-heading h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            letter-spacing: -0.03em;
-        }
-
-        .section-heading p {
-            font-family: 'Lora', serif;
-            color: var(--gray);
-            font-size: 1.15rem;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
         }
 
-        /* Stats Section */
-        .stats {
-            background: var(--dark);
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
             color: white;
-            padding: 5rem 2rem;
-            margin: 6rem 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stat-item h3 {
+            text-decoration: none;
             font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: transform 0.2s, opacity 0.2s;
         }
 
-        .stat-item p {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
+        .btn:hover {
+            transform: translateY(-2px);
             opacity: 0.9;
         }
 
-        /* About Page */
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .about-content h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            color: var(--dark);
-        }
-
-        .about-content p {
-            font-family: 'Lora', serif;
-            font-size: 1.15rem;
-            color: var(--text);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .mission-box {
-            background: var(--dark);
-            color: white;
-            padding: 4rem;
-            margin: 4rem 0;
-            border-left: 4px solid var(--primary);
-        }
-
-        .mission-box h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .mission-box p {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-        }
-
-        /* Issues Grid */
-        .issues-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .issue-card {
-            background: white;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-        }
-
-        .issue-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .issue-cover {
-            width: 100%;
-            height: 450px;
-            background: var(--dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            padding: 3rem;
-            text-align: center;
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .issue-cover h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .issue-cover p {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            opacity: 0.7;
-        }
-
-        .issue-cover div {
-            font-family: 'Lora', serif;
-            font-style: italic;
-            margin-top: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .issue-info {
-            padding: 2rem;
-            background: white;
-        }
-
-        .issue-info p {
-            font-family: 'Lora', serif;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* Submit Form */
-        .submit-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            padding: 4rem;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--dark);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            font-size: 1rem;
-            font-family: 'Lora', serif;
-            transition: border-color 0.3s;
-            background: var(--paper);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-button {
-            background: var(--primary);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(93, 93, 255, 0.3);
-        }
-
-        /* Contact Page */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            padding: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-details p {
-            font-family: 'Lora', serif;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-            margin-top: 8rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section p {
-            font-family: 'Lora', serif;
-            line-height: 1.7;
-        }
-
-        .footer-section a {
-            display: block;
-            font-family: 'Lora', serif;
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            margin-bottom: 0.8rem;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* List Styling for About Page */
-        .about-content ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 2rem 0;
-        }
-
-        .about-content ul li {
-            padding: 1.5rem;
-            background: white;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--primary);
-        }
-
-        .about-content ul li strong {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        /* Responsive */
+        /* Mobile Menu Toggle (Simplified) */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .nav-links {
-                gap: 1.2rem;
-                font-size: 0.75rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-heading h2 {
-                font-size: 2.5rem;
-            }
-
-            .submit-form {
-                padding: 2rem;
-            }
+            .nav-links { display: none; } /* Add a hamburger menu for production */
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav>
         <div class="nav-container">
-            <div class="logo">The Centrifuge</div>
+            <a href="#" class="logo" onclick="showPage('home')">THE CENTRIFUGE</a>
             <ul class="nav-links">
-                <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('about')">About</a></li>
-                <li><a onclick="showPage('issues')">Browse Issues</a></li>
-                <li><a onclick="showPage('submit')">Submit</a></li>
-                <li><a onclick="showPage('subscribe')">Subscribe</a></li>
-                <li><a onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#" onclick="showPage('home')" id="link-home">Home</a></li>
+                <li><a href="#" onclick="showPage('articles')" id="link-articles">Articles</a></li>
+                <li><a href="#" onclick="showPage('about')" id="id-about">About</a></li>
+                <li><a href="#" onclick="showPage('submit')" id="link-submit">Submit</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
+    <section id="home" class="page active">
         <div class="hero">
-            <div class="hero-content">
-                <h1>The Centrifuge</h1>
-                <p>A high school magazine exploring science, technology, engineering, and mathematics through the lens of student discovery</p>
-                <a href="#" class="cta-button" onclick="showPage('submit')">Submit Your Work</a>
-            </div>
+            <h1>Spinning Curiosity into Discovery.</h1>
+            <p>A student-led exploration of the science, technology, engineering, and mathematics shaping our future.</p>
+            <a href="#" class="btn" onclick="showPage('articles')">Read Latest Issue</a>
         </div>
+    </section>
 
-        <div class="container">
-            <div class="section-heading">
-                <h2>Featured Articles</h2>
-                <p>Latest insights from student researchers and writers</p>
-            </div>
-
-            <div class="articles-grid">
-                <div class="article-card">
-                    <div class="article-image">🧬</div>
-                    <div class="article-content">
-                        <span class="article-category">Biology</span>
-                        <h3 class="article-title">CRISPR in Action: Gene Editing's Future</h3>
-                        <p class="article-excerpt">Exploring how CRISPR technology is revolutionizing medicine and what it means for our generation...</p>
-                        <div class="article-meta">
-                            <span>Sarah Chen</span>
-                            <span>5 min read</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-image">🤖</div>
-                    <div class="article-content">
-                        <span class="article-category">Computer Science</span>
-                        <h3 class="article-title">Building My First AI Model</h3>
-                        <p class="article-excerpt">A student's journey through machine learning, from theory to deployment on a real-world project...</p>
-                        <div class="article-meta">
-                            <span>Marcus Johnson</span>
-                            <span>8 min read</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-image">🚀</div>
-                    <div class="article-content">
-                        <span class="article-category">Physics</span>
-                        <h3 class="article-title">The Physics of Space Travel</h3>
-                        <p class="article-excerpt">Understanding the challenges and innovations that make interplanetary travel possible...</p>
-                        <div class="article-meta">
-                            <span>Emma Rodriguez</span>
-                            <span>6 min read</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-image">⚡</div>
-                    <div class="article-content">
-                        <span class="article-category">Engineering</span>
-                        <h3 class="article-title">Renewable Energy Solutions</h3>
-                        <p class="article-excerpt">How student engineers are contributing to sustainable energy innovations in their communities...</p>
-                        <div class="article-meta">
-                            <span>Aiden Patel</span>
-                            <span>7 min read</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-image">🔬</div>
-                    <div class="article-content">
-                        <span class="article-category">Chemistry</span>
-                        <h3 class="article-title">Nanomaterials & Their Applications</h3>
-                        <p class="article-excerpt">Diving into the microscopic world where chemistry meets nanotechnology...</p>
-                        <div class="article-meta">
-                            <span>Olivia Kim</span>
-                            <span>6 min read</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-image">📊</div>
-                    <div class="article-content">
-                        <span class="article-category">Mathematics</span>
-                        <h3 class="article-title">Cryptography: Math Protecting Privacy</h3>
-                        <p class="article-excerpt">How mathematical principles safeguard our digital communications every day...</p>
-                        <div class="article-meta">
-                            <span>Jake Williams</span>
-                            <span>5 min read</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="articles" class="page">
+        <div class="hero">
+            <h1>The Archives</h1>
+            <p>Explore our collection of peer-reviewed student research and editorials.</p>
         </div>
+    </section>
 
-        <div class="stats">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Student Contributors</p>
-                </div>
-                <div class="stat-item">
-                    <h3>50+</h3>
-                    <p>Schools Worldwide</p>
-                </div>
-                <div class="stat-item">
-                    <h3>200+</h3>
-                    <p>Published Articles</p>
-                </div>
-                <div class="stat-item">
-                    <h3>15</h3>
-                    <p>Issues Released</p>
-                </div>
-            </div>
+    <section id="about" class="page">
+        <div class="hero">
+            <h1>Our Mission</h1>
+            <p>The Centrifuge was founded to bridge the gap between high school STEM education and professional scientific publishing.</p>
         </div>
-    </div>
+    </section>
 
-    <!-- About Page -->
-    <div id="about" class="page">
-        <div class="container">
-            <div class="about-content">
-                <h2>About The Centrifuge</h2>
-                <p>The Centrifuge is a student-run STEM magazine that focuses on bringing clarity to complex scientific ideas. Like a camera The Centrifuge that controls what comes into focus, we help high school students frame their discoveries and share their unique perspectives on science, technology, engineering, and mathematics.</p>
-
-                <div class="mission-box">
-                    <h3>Our Mission</h3>
-                    <p>To create a platform where high school students can share their research, insights, and passion for STEM with peers around the world. We aim to foster a community of young scientists and innovators who support and inspire each other.</p>
-                </div>
-
-                <h2>What We Publish</h2>
-                <p>We feature a wide range of content, including:</p>
-                <ul>
-                    <li>
-                        <strong>Technical Tutorials</strong> - How-to guides and coding projects
-                    </li>
-                    <li>
-                        <strong>Opinion Pieces</strong> - Perspectives on scientific developments
-                    </li>
-                    <li>
-                        <strong>Interviews</strong> - Conversations with student researchers and professionals
-                    </li>
-                </ul>
-
-                <h2>Why The Centrifuge?</h2>
-                <p>In photography, the The Centrifuge controls depth of field—what's sharp and what fades into the background. In science, it's about choosing what to focus on, how to frame a problem, and what perspective to take. High school students bring fresh eyes to STEM, seeing details others might miss and asking questions that challenge conventions. The Centrifuge gives those perspectives a platform, bringing student discoveries into sharp focus.</p>
-
-                <p style="margin-top: 3rem; font-size: 1.2rem; color: var(--dark); font-family: 'Outfit', sans-serif; font-weight: 700;">Join us in celebrating student innovation and building the next generation of STEM leaders.</p>
-            </div>
+    <section id="submit" class="page">
+        <div class="hero">
+            <h1>Submit Your Work</h1>
+            <p>Have a research paper or a STEM-related essay? We want to see it.</p>
         </div>
-    </div>
-
-    <!-- Issues Page -->
-    <div id="issues" class="page">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Browse Past Issues</h2>
-                <p>Explore our collection of published magazines</p>
-            </div>
-
-            <div class="issues-grid">
-                <div class="issue-card">
-                    <div class="issue-cover">
-                        <h3>Issue #15</h3>
-                        <p>Winter 2025</p>
-                        <div>Climate Tech Special</div>
-                    </div>
-                    <div class="issue-info">
-                        <p>12 articles exploring sustainable innovations and environmental science</p>
-                    </div>
-                </div>
-
-                <div class="issue-card">
-                    <div class="issue-cover">
-                        <h3>Issue #14</h3>
-                        <p>Fall 2024</p>
-                        <div>AI & Ethics</div>
-                    </div>
-                    <div class="issue-info">
-                        <p>Exploring the intersection of artificial intelligence and ethical considerations</p>
-                    </div>
-                </div>
-
-                <div class="issue-card">
-                    <div class="issue-cover">
-                        <h3>Issue #13</h3>
-                        <p>Summer 2024</p>
-                        <div>Space Exploration</div>
-                    </div>
-                    <div class="issue-info">
-                        <p>Student perspectives on the final frontier and space technology</p>
-                    </div>
-                </div>
-
-                <div class="issue-card">
-                    <div class="issue-cover">
-                        <h3>Issue #12</h3>
-                        <p>Spring 2024</p>
-                        <div>Biotech Revolution</div>
-                    </div>
-                    <div class="issue-info">
-                        <p>Cutting-edge developments in biotechnology and genetic engineering</p>
-                    </div>
-                </div>
-
-                <div class="issue-card">
-                    <div class="issue-cover">
-                        <h3>Issue #11</h3>
-                        <p>Winter 2024</p>
-                        <div>Quantum Computing</div>
-                    </div>
-                    <div class="issue-info">
-                        <p>Breaking down quantum mechanics and its computing applications</p>
-                    </div>
-                </div>
-
-                <div class="issue-card">
-                    <div class="issue-cover">
-                        <h3>Issue #10</h3>
-                        <p>Fall 2023</p>
-                        <div>Materials Science</div>
-                    </div>
-                    <div class="issue-info">
-                        <p>Innovative materials shaping the future of technology</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Submit Page -->
-    <div id="submit" class="page">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Submit Your Work</h2>
-                <p>Share your STEM insights with high schoolers worldwide</p>
-            </div>
-
-            <form class="submit-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Your Name *</label>
-                    <input type="text" id="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="school">School Name *</label>
-                    <input type="text" id="school" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="grade">Grade Level *</label>
-                    <select id="grade" required>
-                        <option value="">Select grade...</option>
-                        <option value="9">9th Grade</option>
-                        <option value="10">10th Grade</option>
-                        <option value="11">11th Grade</option>
-                        <option value="12">12th Grade</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="category">Article Category *</label>
-                    <select id="category" required>
-                        <option value="">Select category...</option>
-                        <option value="biology">Biology</option>
-                        <option value="chemistry">Chemistry</option>
-                        <option value="physics">Physics</option>
-                        <option value="computer-science">Computer Science</option>
-                        <option value="engineering">Engineering</option>
-                        <option value="mathematics">Mathematics</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="title">Article Title *</label>
-                    <input type="text" id="title" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="abstract">Abstract/Summary (250 words max) *</label>
-                    <textarea id="abstract" required placeholder="Provide a brief summary of your article..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Additional Information</label>
-                    <textarea id="message" placeholder="Any additional details, questions, or comments..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-button">Submit Article</button>
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--gray); font-family: 'Lora', serif; font-size: 0.95rem;">
-                    We'll review your submission and get back to you within 2 weeks
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Subscribe Page -->
-    <div id="subscribe" class="page">
-        <div class="hero" style="padding: 8rem 2rem 6rem;">
-            <div class="hero-content">
-                <h1 style="font-size: 3.5rem;">Never Miss an Issue</h1>
-                <p>Get the latest student research, insights, and discoveries delivered straight to your inbox every month. Completely free.</p>
-            </div>
-        </div>
-
-        <div class="container" style="padding-top: 3rem;">
-            <div style="max-width: 700px; margin: 0 auto;">
-                
-                <!-- What You'll Get -->
-                <div style="background: var(--dark); color: white; padding: 4rem 3rem; margin-bottom: 4rem; border-left: 4px solid var(--primary);">
-                    <h3 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">What You'll Get</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="font-family: 'Lora', serif; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; padding-left: 2rem; position: relative; line-height: 1.7;">
-                            <span style="position: absolute; left: 0; color: var(--primary); font-size: 1.2rem;">✓</span>
-                            Monthly digital magazine with the latest student research and articles
-                        </li>
-                        <li style="font-family: 'Lora', serif; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; padding-left: 2rem; position: relative; line-height: 1.7;">
-                            <span style="position: absolute; left: 0; color: var(--primary); font-size: 1.2rem;">✓</span>
-                            Access to our complete archive of past issues
-                        </li>
-                        <li style="font-family: 'Lora', serif; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; padding-left: 2rem; position: relative; line-height: 1.7;">
-                            <span style="position: absolute; left: 0; color: var(--primary); font-size: 1.2rem;">✓</span>
-                            Behind-the-scenes updates from our editorial team
-                        </li>
-                        <li style="font-family: 'Lora', serif; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; padding-left: 2rem; position: relative; line-height: 1.7;">
-                            <span style="position: absolute; left: 0; color: var(--primary); font-size: 1.2rem;">✓</span>
-                            Early notifications about submission deadlines and opportunities
-                        </li>
-                        <li style="font-family: 'Lora', serif; color: rgba(255,255,255,0.9); margin-bottom: 0; padding-left: 2rem; position: relative; line-height: 1.7;">
-                            <span style="position: absolute; left: 0; color: var(--primary); font-size: 1.2rem;">✓</span>
-                            Join our community Discord server
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Subscription Form -->
-                <div class="section-heading">
-                    <h2>Subscribe for Free</h2>
-                    <p>Join thousands of students staying curious</p>
-                </div>
-
-                <form class="submit-form" onsubmit="handleSubscribe(event)">
-                    <div class="form-group">
-                        <label for="sub-name">Full Name *</label>
-                        <input type="text" id="sub-name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sub-email">Email Address *</label>
-                        <input type="email" id="sub-email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sub-school">School/Institution (Optional)</label>
-                        <input type="text" id="sub-school">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sub-interests">What STEM topics interest you most? (Optional)</label>
-                        <textarea id="sub-interests" placeholder="Biology, computer science, physics, engineering, mathematics, etc." rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group" style="margin-top: 2rem;">
-                        <label style="display: flex; align-items: flex-start; text-transform: none; letter-spacing: normal; font-size: 1rem; cursor: pointer;">
-                            <input type="checkbox" required style="width: auto; margin-right: 0.8rem; margin-top: 0.2rem; flex-shrink: 0;">
-                            <span style="font-family: 'Lora', serif; font-weight: 400;">I agree to receive monthly issues and occasional updates from The Centrifuge Magazine. You can unsubscribe at any time.</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="submit-button">Subscribe Now</button>
-                    <p style="text-align: center; margin-top: 1.5rem; color: var(--gray); font-family: 'Lora', serif; font-size: 0.95rem;">
-                        We respect your privacy. No spam, ever. Unsubscribe anytime.
-                    </p>
-                </form>
-
-                <!-- Why Subscribe Section -->
-                <div style="margin-top: 6rem; padding: 4rem 3rem; background: white; border: 1px solid rgba(0, 0, 0, 0.08);">
-                    <h3 style="font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 2.5rem; color: var(--dark); text-align: center;">Why We're Free</h3>
-                    <p style="font-family: 'Lora', serif; color: var(--text); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
-                        We believe knowledge should be accessible to everyone. The Centrifuge is run by students, for students, and we're committed to keeping our content free forever.
-                    </p>
-                    <p style="font-family: 'Lora', serif; color: var(--text); line-height: 1.8; font-size: 1.1rem;">
-                        Our mission is to amplify student voices in STEM, not to put them behind paywalls. By subscribing, you're joining a community that believes in open access to student research and scientific curiosity.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact Page -->
-    <div id="contact" class="page">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Get In Touch</h2>
-                <p>Questions, suggestions, or just want to say hi? We'd love to hear from you!</p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-details">
-                            <h3>Email Us</h3>
-                            <p>editors@The Centrifugemag.org</p>
-                            <p>submit@The Centrifugemag.org</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">🌐</div>
-                        <div class="contact-details">
-                            <h3>Follow Us</h3>
-                            <p>@The Centrifugemag on Instagram</p>
-                            <p>@The Centrifugemag on Twitter</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">💬</div>
-                        <div class="contact-details">
-                            <h3>Join Our Community</h3>
-                            <p>Discord: The Centrifugemag.gg</p>
-                            <p>Connect with fellow student scientists</p>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="submit-form" onsubmit="handleContactSubmit(event)">
-                    <div class="form-group">
-                        <label for="contact-name">Name</label>
-                        <input type="text" id="contact-name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contact-email">Email</label>
-                        <input type="email" id="contact-email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contact-subject">Subject</label>
-                        <input type="text" id="contact-subject" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>The Centrifuge</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem;">
-                    Bringing student perspectives on STEM into focus. By high schoolers, for high schoolers.
-                </p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a onclick="showPage('home')">Home</a>
-                <a onclick="showPage('about')">About Us</a>
-                <a onclick="showPage('issues')">Browse Issues</a>
-                <a onclick="showPage('submit')">Submit Article</a>
-                <a onclick="showPage('subscribe')">Subscribe</a>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#">Submission Guidelines</a>
-                <a href="#">Style Guide</a>
-                <a href="#">FAQ</a>
-                <a href="#">Editorial Team</a>
-            </div>
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">Discord</a>
-                <a href="#">Newsletter</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 The Centrifuge Magazine. Made by students, for students. All rights reserved.</p>
-        </div>
-    </footer>
+    </section>
 
     <script>
         function showPage(pageId) {
             // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
             // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Thank you for your submission! We\'ll review your article and get back to you soon.');
-            event.target.reset();
-        }
-
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            alert('Thanks for reaching out! We\'ll get back to you as soon as possible.');
-            event.target.reset();
-        }
-
-        function handleSubscribe(event) {
-            event.preventDefault();
-            alert('Thank you for subscribing to The Centrifuge! Check your email for confirmation.');
-            event.target.reset();
-        }
-
-        // Smooth scroll for CTA button
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showPage('submit');
-                });
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                window.scrollTo(0, 0);
             }
-        });
+
+            // Update active link state
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick').includes(pageId)) {
+                    link.classList.add('active');
+                }
+            });
+        }
     </script>
+
 </body>
 </html>
