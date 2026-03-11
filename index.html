@@ -64,7 +64,7 @@
             font-weight: 800;
             color: var(--dark);
             letter-spacing: -0.03em;
-            text-decoration: none;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -85,16 +85,16 @@
             cursor: pointer;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover {
             color: var(--primary);
         }
 
-        /* Page Transitions */
+        /* Page Container */
         .page {
             display: none;
             min-height: 100vh;
-            padding-top: 100px; /* Adjusted for nav height */
-            animation: fadeIn 0.6s ease-out;
+            padding-top: 80px;
+            animation: fadeIn 0.5s ease-in;
         }
 
         .page.active {
@@ -102,53 +102,305 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Hero Section Styling */
+        /* Hero Section */
         .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+            background: var(--dark);
+            color: white;
+            padding: 10rem 2rem 8rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 800px;
+            height: 800px;
+            background-image: url('data:image/svg+xml,<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="white" stroke-width="2" opacity="0.05"><circle cx="400" cy="400" r="350"/><circle cx="400" cy="400" r="300"/><circle cx="400" cy="400" r="250"/><path d="M 400 50 L 480 180 L 620 220 L 580 360 L 650 480 L 520 520 L 480 650 L 400 580 L 320 650 L 280 520 L 150 480 L 220 360 L 180 220 L 320 180 Z"/><path d="M 400 100 L 460 200 L 570 230 L 540 340 L 600 440 L 500 470 L 460 580 L 400 520 L 340 580 L 300 470 L 200 440 L 260 340 L 230 230 L 340 200 Z"/></g></svg>');
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .btn {
+        .cta-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
             background: var(--primary);
             color: white;
+            padding: 1.1rem 2.8rem;
+            border-radius: 50px;
             text-decoration: none;
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            border-radius: 4px;
-            transition: transform 0.2s, opacity 0.2s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(93, 93, 255, 0.3);
+            cursor: pointer;
+            border: none;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(93, 93, 255, 0.4);
         }
 
-        /* Mobile Menu Toggle (Simplified) */
+        /* Container & Grids */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 280px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: white;
+        }
+
+        .article-content { padding: 2rem; }
+
+        .article-category {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Outfit', sans-serif;
+            color: var(--gray);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        /* Stats */
+        .stats {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 2rem;
+            margin: 6rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* About & Forms */
+        .about-content { max-width: 900px; margin: 0 auto; }
+        .mission-box {
+            background: var(--dark);
+            color: white;
+            padding: 4rem;
+            margin: 4rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .issue-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .issue-cover {
+            height: 450px;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .submit-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 4rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group { margin-bottom: 2rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            font-family: 'Lora', serif;
+            background: var(--paper);
+        }
+
+        .submit-button {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(93, 93, 255, 0.3); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-item { display: flex; gap: 2rem; margin-bottom: 3rem; }
+        .contact-icon {
+            width: 60px; height: 60px;
+            background: var(--dark);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.8rem; flex-shrink: 0;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 8rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* List Styling */
+        .about-content ul li {
+            padding: 1.5rem;
+            background: white;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--primary);
+            list-style: none;
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Add a hamburger menu for production */
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Could add a mobile menu later */
         }
     </style>
 </head>
@@ -156,44 +408,230 @@
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo" onclick="showPage('home')">THE CENTRIFUGE</a>
+            <div class="logo" onclick="showPage('home')">The Centrifuge</div>
             <ul class="nav-links">
-                <li><a href="#" onclick="showPage('home')" id="link-home">Home</a></li>
-                <li><a href="#" onclick="showPage('articles')" id="link-articles">Articles</a></li>
-                <li><a href="#" onclick="showPage('about')" id="id-about">About</a></li>
-                <li><a href="#" onclick="showPage('submit')" id="link-submit">Submit</a></li>
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('about')">About</a></li>
+                <li><a onclick="showPage('issues')">Browse Issues</a></li>
+                <li><a onclick="showPage('submit')">Submit</a></li>
+                <li><a onclick="showPage('subscribe')">Subscribe</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="home" class="page active">
+    <div id="home" class="page active">
         <div class="hero">
-            <h1>Spinning Curiosity into Discovery.</h1>
-            <p>A student-led exploration of the science, technology, engineering, and mathematics shaping our future.</p>
-            <a href="#" class="btn" onclick="showPage('articles')">Read Latest Issue</a>
+            <div class="hero-content">
+                <h1>The Centrifuge</h1>
+                <p>A high school magazine exploring science, technology, engineering, and mathematics through the lens of student discovery</p>
+                <button class="cta-button" onclick="showPage('submit')">Submit Your Work</button>
+            </div>
         </div>
-    </section>
 
-    <section id="articles" class="page">
-        <div class="hero">
-            <h1>The Archives</h1>
-            <p>Explore our collection of peer-reviewed student research and editorials.</p>
-        </div>
-    </section>
+        <div class="container">
+            <div class="section-heading" style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3.5rem;">Featured Articles</h2>
+                <p style="color: var(--gray);">Latest insights from student researchers and writers</p>
+            </div>
 
-    <section id="about" class="page">
-        <div class="hero">
-            <h1>Our Mission</h1>
-            <p>The Centrifuge was founded to bridge the gap between high school STEM education and professional scientific publishing.</p>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-image">🧬</div>
+                    <div class="article-content">
+                        <span class="article-category">Biology</span>
+                        <h3 class="article-title">CRISPR in Action: Gene Editing's Future</h3>
+                        <p class="article-excerpt">Exploring how CRISPR technology is revolutionizing medicine and what it means for our generation...</p>
+                        <div class="article-meta"><span>Sarah Chen</span><span>5 min read</span></div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-image">🤖</div>
+                    <div class="article-content">
+                        <span class="article-category">Computer Science</span>
+                        <h3 class="article-title">Building My First AI Model</h3>
+                        <p class="article-excerpt">A student's journey through machine learning, from theory to deployment...</p>
+                        <div class="article-meta"><span>Marcus Johnson</span><span>8 min read</span></div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-image">🚀</div>
+                    <div class="article-content">
+                        <span class="article-category">Physics</span>
+                        <h3 class="article-title">The Physics of Space Travel</h3>
+                        <p class="article-excerpt">Understanding the challenges and innovations that make interplanetary travel possible...</p>
+                        <div class="article-meta"><span>Emma Rodriguez</span><span>6 min read</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <section id="submit" class="page">
-        <div class="hero">
-            <h1>Submit Your Work</h1>
-            <p>Have a research paper or a STEM-related essay? We want to see it.</p>
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item"><h3>500+</h3><p>Student Contributors</p></div>
+                <div class="stat-item"><h3>50+</h3><p>Schools Worldwide</p></div>
+                <div class="stat-item"><h3>15</h3><p>Issues Released</p></div>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <div id="about" class="page">
+        <div class="container">
+            <div class="about-content">
+                <h2>About The Centrifuge</h2>
+                <p>The Centrifuge is a student-run STEM magazine that focuses on bringing clarity to complex scientific ideas. We help high school students frame their discoveries and share their unique perspectives.</p>
+
+                <div class="mission-box">
+                    <h3>Our Mission</h3>
+                    <p>To create a platform where high school students can share their research, insights, and passion for STEM with peers around the world.</p>
+                </div>
+
+                <h2>What We Publish</h2>
+                <ul>
+                    <li><strong>Technical Tutorials</strong> - How-to guides and coding projects</li>
+                    <li><strong>Opinion Pieces</strong> - Perspectives on scientific developments</li>
+                    <li><strong>Interviews</strong> - Conversations with student researchers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="issues" class="page">
+        <div class="container">
+            <div class="section-heading" style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3rem;">Browse Past Issues</h2>
+                <p>Explore our collection of published magazines</p>
+            </div>
+            <div class="issues-grid">
+                <div class="issue-card">
+                    <div class="issue-cover">
+                        <h3>Issue #15</h3>
+                        <p>Winter 2025</p>
+                        <div style="font-style: italic; margin-top: 2rem;">Climate Tech Special</div>
+                    </div>
+                </div>
+                <div class="issue-card">
+                    <div class="issue-cover">
+                        <h3>Issue #14</h3>
+                        <p>Fall 2024</p>
+                        <div style="font-style: italic; margin-top: 2rem;">AI & Ethics</div>
+                    </div>
+                </div>
+                <div class="issue-card">
+                    <div class="issue-cover">
+                        <h3>Issue #13</h3>
+                        <p>Summer 2024</p>
+                        <div style="font-style: italic; margin-top: 2rem;">Space Exploration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="submit" class="page">
+        <div class="container">
+            <div class="section-heading" style="text-align: center; margin-bottom: 4rem;">
+                <h2>Submit Your Work</h2>
+                <p>Join our community of student researchers and writers</p>
+            </div>
+            <form class="submit-form" onsubmit="event.preventDefault(); alert('Thank you for your submission!');">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>School Email</label>
+                    <input type="email" placeholder="yourname@school.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select>
+                        <option>Biology</option>
+                        <option>Computer Science</option>
+                        <option>Physics</option>
+                        <option>Engineering</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Brief Abstract</label>
+                    <textarea placeholder="Describe your article..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Submission</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="subscribe" class="page">
+        <div class="container">
+            <div class="about-content" style="text-align: center;">
+                <h2>Stay Updated</h2>
+                <p>Get the latest issues delivered straight to your inbox.</p>
+                <div class="submit-form" style="margin-top: 3rem;">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="you@example.com" required>
+                    </div>
+                    <button class="submit-button" onclick="alert('Subscription successful!')">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="container">
+            <div class="section-heading" style="text-align: center; margin-bottom: 4rem;">
+                <h2>Get in Touch</h2>
+                <p>Questions or collaborations?</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3>Email Us</h3>
+                            <p>hello@thecentrifuge.edu</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Vancouver, British Columbia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-form" style="margin: 0;">
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="How can we help?"></textarea>
+                    </div>
+                    <button class="submit-button">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="color: white; margin-bottom: 1.5rem;">The Centrifuge</div>
+                <p>Empowering the next generation of STEM leaders.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <a onclick="showPage('issues')">Past Issues</a>
+                <a onclick="showPage('submit')">Submit Work</a>
+            </div>
+            <div class="footer-section">
+                <h3>Social</h3>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; opacity: 0.5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">
+            &copy; 2026 The Centrifuge Magazine
+        </div>
+    </footer>
 
     <script>
         function showPage(pageId) {
@@ -202,22 +640,14 @@
             pages.forEach(page => page.classList.remove('active'));
 
             // Show selected page
-            const selectedPage = document.getElementById(pageId);
-            if (selectedPage) {
-                selectedPage.classList.add('active');
-                window.scrollTo(0, 0);
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
             }
 
-            // Update active link state
-            const links = document.querySelectorAll('.nav-links a');
-            links.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('onclick').includes(pageId)) {
-                    link.classList.add('active');
-                }
-            });
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
-
 </body>
 </html>
